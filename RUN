@@ -1,0 +1,28 @@
+#!/bin/bash
+# change this file to your needs
+
+echo "Adding some modules"
+
+module add cmake-3.18.3
+module add gcc-10.2
+
+echo "#################"
+echo "    COMPILING    "
+echo "#################"
+
+# g++ -Wall -std=c++17 -O3 src/main.cpp src/file2 -o network
+
+mkdir -p build
+cd build
+
+cmake -D CMAKE_CXX_COMPILER=g++ -D CMAKE_C_COMPILER=gcc ..
+make
+
+cd src
+
+echo "#################"
+echo "     RUNNING     "
+echo "#################"
+
+./NN_run
+
